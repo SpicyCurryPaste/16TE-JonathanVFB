@@ -21,7 +21,7 @@ public class rps {
 			computer = (int) (Math.random() * 3);
 			
 			
-
+          // computer will pick one of the following.
 			switch (computer) {
 			case 0:
 				used = " [0] Rock";
@@ -54,6 +54,7 @@ public class rps {
 				System.out.println("you won! " + "Player: "
 						+ "" + score +" , Computer:" + cpuScore); }
 			else if (cpuScore == 3) {
+				//print out score.
 				System.out.println("The computer won! " + 
 			"Computer: " + cpuScore + ", Player: " + score);
 				

@@ -1,0 +1,342 @@
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+import java.math.*;
+
+
+public class aventry {
+	public static String Name = "";            /*Attributes and Info */
+	public static String Surname = "";
+	 public static String Home = "";
+	public static String pClass;
+	public static int age = 0;
+	public static int level = 1;
+	public static int experience = 0;
+	public static String command = "";
+	public static int intelligence = 1;
+	 public static int health = 10;
+	 public static int stamina = 15;
+	 public static int strength = 1;
+	 public static int gold = 0;
+	 
+	 public static int pPosX = 120;
+	 public static int pPosY = -420;
+	 
+	 
+	 public static int Vitality = health * 2;
+	 public static int Endurance = stamina * 3;
+	 public static int Damage = strength * 3;
+	 
+	 public static String used = "";
+	
+	 
+	 public static String Knight, Scholar, Monk, Peasant;
+	public  static Scanner scnr = new Scanner (System.in);
+	
+	public static ArrayList<Monster> monsterlist = new ArrayList<Monster>();
+	
+	 
+	
+	public static void main(String[] args) {
+//		monsterlist.add();
+		
+		gameBoi();
+	}
+			
+	
+	
+	public static void gameBoi () {
+		// Game + Intro
+		
+		System.out.println("Greetings, traveler, what may thy name be?");
+		String Name = scnr.nextLine();
+		System.out.println(Name + "... and your surname?");
+		String Surname = scnr.nextLine();
+		System.out.println(Name +" "+ Surname + ", Where do you come from?");
+		String Home = scnr.nextLine();
+		System.out.print(Name +" "+ Surname +" "+ "Of" +" "+ Home + ", what may your age be?");
+		int age = scnr.nextInt();
+		int birth = 1632 - age;
+		System.out.println(Name +" "+ Surname +" "+ "Of" +" "+ Home + ", you were born " + birth + ". Present years is 1632");
+         delay(4000);
+          System.out.println("So, " + Name +" "+ Surname +" "+ "Of" +" "+ Home +" , what's your profession? Knight [1], Scholar [2], Monk [3], Peasant [4]" );
+  		int clsss = scnr.nextInt();
+  		scnr.nextLine();
+		classesBoi(clsss);    //Calls the method for classes selection
+		
+		System.out.print(Name +" "+ Surname +"," + " The " + pClass+ " from" +" "+ Home + "!");
+		delay (3000);
+		System.out.println(" *The unknown voice suddenly disappeared*");
+		delay(3000);
+		System.out.println("Tips: write status to see your character's condition.");
+		delay(6000);
+		
+		while (Vitality > 0 || level < 70) {
+			movement();
+			leveling();
+		}
+		
+		
+		
+		
+		
+		
+		
+	}
+	static void delay (int millis){
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void playerBoi () {
+
+		
+		
+	
+		
+	}
+	
+	public static int vitalityChange (int vit,int change) {
+		vit = vit + change;
+		if(vit <= 0){
+			pDeath();
+			return 0;
+		}
+		return vit;
+	}
+	
+	public static void movement () {
+		System.out.println("Shalt thou move towards dusk? (North) Type N or n");
+		delay(1000);
+		System.out.println("Or shalt thou move to where the sun rise? (South) Type S or s");
+		delay(1000);
+		System.out.println("Or would thou rather like to venture the endless deserts? (West) Type W or w");
+		delay(1000);
+		System.out.println("Maybe, the invigorating and refreshing but yet quite harsh jungles interest you? (East) Type E or e");
+		delay(1000);
+		System.out.println("Or would you like to Stay?" + " Then, type r or R");
+		command = scnr.nextLine();
+		
+		char dir = command.charAt(0);
+			switch (dir) {
+			
+			case 'n':
+			case 'N': pPosY++;
+			Endurance--;
+			System.out.println("You moved North! " + " Coordinates: " + "x  "+ pPosX+ ", y " + pPosY + "Endurance left: " +Endurance);
+			fainted();
+			spawn();
+			
+			break;
+			
+			case 's':
+			case 'S': pPosY--;
+			Endurance--;
+			System.out.println("You moved South! " + " Coordinates: " + "x  "+ pPosX+ ", y " + pPosY + " Endurance left: " +Endurance);
+			fainted();
+			spawn();
+			
+			break;
+			
+			case 'w':
+			case 'W': pPosX--;
+			Endurance--;
+			System.out.println("You moved West! "+ " Coordinates: " + "x  "+ pPosX+ ", y " + pPosY +" Endurance left: " + Endurance);
+			fainted();
+			spawn();
+			
+			break;
+			
+			case 'e':
+			case 'E': pPosX++;
+			Endurance--;
+			System.out.println("You moved East! " + " Coordinates: " + "x  "+ pPosX+ ", y " + pPosY + " Endurance left: " +  Endurance);
+			fainted();
+			spawn();
+			
+			        break;
+			
+			case 'r':
+			case 'R': 
+				System.out.println("Access inventory (i) or continue journeying? (j)");
+				command = scnr.nextLine();
+				char o = command.charAt(0);
+				switch (o){
+				case 'i':
+				case 'I': inventory();
+					
+					break;
+					
+				case 'j':
+				case 'J': movement();
+				
+				}
+				
+				break;
+			}
+			
+		
+		
+	}
+
+	
+	
+
+		
+		public static void classesBoi (int i) {
+			// Method for choosing a class
+			switch (i){
+			case 1: pClass = "Knight";
+			health += 2;
+			stamina += 3;
+			strength += 5;
+			intelligence += 1;
+			
+			break;
+			
+			case 2: pClass = "Scholar";
+			health  += 3;
+			stamina += 2;
+			strength += 1;
+			intelligence += 5;
+			
+			break;
+			
+			case 3: pClass = "Monk";
+			health  += 5;
+			stamina += 2;
+			strength += 1;
+			intelligence += 3;
+			
+			break;
+			
+			case 4: pClass = "Peasant";
+			health  += 2;
+			stamina += 4;
+			strength += 5;
+			intelligence += 1;
+			
+			
+			}
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		public static class Monster {
+			// Monster initialization
+			String name;
+			int mLevel;
+			int hp;
+			int dmg;
+			
+			public Monster(String Name,int HP, int DMG, int LEVEL) {
+				// Monster info and attributes/stats
+				this.name = Name;
+				this.mLevel = LEVEL;
+				this.hp = HP;
+				this.dmg = DMG;
+				
+			}
+		}
+		
+		public static void spawn() {
+			//Method for spawning hostile creatures, 20% chance of spawning monster.
+			int ss = 0 + (int)(Math.random() * ((4 - 0) + 1));
+			if(ss==1){
+			int rn = 0 + (int)(Math.random() * ((monsterlist.size() - 0) + 1));
+			Monster m = new Monster("rat", 20, 2, 0);
+			Monster o = new Monster ("Snake", 15, 3, 0);
+			}
+			
+		}
+		
+		public static void combat () {
+		// Use Rock, paper, scissors method.
+		}
+		
+		public static void inventory () {
+			System.out.println("Check inventory? (c) Or would you like to exit your inventory? (e)");
+			command = scnr.nextLine();
+		char inv = command.charAt(0);
+		switch (inv) {
+		
+		case 'c':
+		case 'C': System.out.println("Items: " );
+		
+		break;
+		
+		case 'e':
+		case 'E': movement();
+		
+		break;
+		
+		}
+		
+		
+		
+		}
+			
+		
+		
+		public static class item  {
+			
+		}
+			
+		
+		
+		
+		public static void leveling () {
+			
+			if (experience == level + 10*2 ) {
+				level++;
+				System.out.println("Level up!");
+				delay(2000);
+				System.out.println("Which attribute would you like to increases?" + "Health: " + health + ", Stamina:" + stamina + ", Strength: " + strength + ", Intelligence: " + intelligence);
+			}
+			
+		}
+		
+		
+		public static void pDeath () {
+			if (Vitality == 0) {
+				System.out.println("You died.");
+				delay(5000);
+				System.exit(3);
+			}
+		}
+		
+		public static void mDeath (Monster m) {
+			if (m.hp == 0) {
+				monsterlist.remove(m);
+				gold +=10;
+				experience += 5 + level *2;
+			}
+		}
+		
+		public static void fainted () {
+			if (Endurance < 0) {
+				gold -= 10;
+				Endurance = 5;
+				System.out.println("Thou hast fainted, gold has been taken and thy thirst hast increased");
+			}
+		}
+		
+		
+		
+		
+}
+

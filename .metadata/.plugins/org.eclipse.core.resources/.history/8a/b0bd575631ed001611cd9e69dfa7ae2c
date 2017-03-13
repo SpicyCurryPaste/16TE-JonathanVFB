@@ -1,0 +1,134 @@
+import java.util.Scanner;
+
+
+
+public class aventry {
+	public static String Name = "";            /*Attributes and Info */
+	public static String Surname = "";
+	 public static String Home = "";
+	public static String pClass;
+	public static int age = 0;
+	public static int intelligence = 1;
+	 public static int health = 10;
+	 public static int stamina = 15;
+	 public static int strength = 5;
+	 public static int gold;
+	 
+	 public static int Vitality = health * 2;
+	 public static int Endurance = stamina * 3;
+	 public static int Damage = strength * 2;
+	 
+	 public static String Knight, Scholar, Monk, Peasant;
+	public  static Scanner scnr = new Scanner (System.in);
+	 
+	public static void main(String[] args) {
+		
+		
+		gameBoi();
+	}
+	public static void gameBoi () {
+		System.out.println("Greetings, traveler, what may thy name be?");
+		String Name = scnr.nextLine();
+		System.out.println(Name + "... and your surname?");
+		String Surname = scnr.nextLine();
+		System.out.println(Name +" "+ Surname + ", Where do you come from?");
+		String Home = scnr.nextLine();
+		System.out.print(Name +" "+ Surname +" "+ "Of" +" "+ Home + ", what may your age be?");
+		int age = scnr.nextInt();
+		int birth = 1632 - age;
+		System.out.println(Name +" "+ Surname +" "+ "Of" +" "+ Home + ", you were born " + birth + ". Present years is 1632");
+         //delay(3000);
+          System.out.println("So, " + Name +" "+ Surname +" "+ "Of" +" "+ Home +" , did you have any profession?" );
+          int pClassinput = scnr.nextLine();
+		int clsss = Integer.parseInt(pClassinput);
+		classesBoi(clsss);
+		//delay(2000);
+		System.out.print(Name +" "+ Surname +" "+ "Of" +" "+ Home +" The " + pClass +"!");
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	static void delay (int millis){
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void playerBoi () {
+
+		
+		
+	
+		
+	}
+		
+		public static void classesBoi (int i) {
+			
+			switch (i){
+			case 1: pClass = "Knight";
+			health += 2;
+			stamina += 3;
+			strength += 5;
+			intelligence += 1;
+			
+			break;
+			
+			case 2: pClass = "Scholar";
+			health  += 3;
+			stamina += 2;
+			strength += 1;
+			intelligence += 5;
+			
+			break;
+			
+			case 3: pClass = "Monk";
+			health  += 5;
+			stamina += 2;
+			strength += 1;
+			intelligence += 3;
+			
+			break;
+			
+			case 4: pClass = "Peasant";
+			health  += 2;
+			stamina += 4;
+			strength += 5;
+			intelligence += 1;
+			
+			
+			}
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+}

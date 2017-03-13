@@ -1,0 +1,28 @@
+package curry.Aventry;
+
+import java.util.Scanner;
+
+public class Player {
+	String name, classString;
+	int age, present, birth;
+
+	public Player(int age, String name, int present, int birth, String classString) {
+		this.age = age;
+		this.name = name;
+		this.present = present;
+		this.birth = birth;
+		this.classString = classString;
+		
+	}
+	
+	public int getAge(){
+		return this.age;
+		
+	}
+	public String getName(){
+		return this.name;
+		
+	}
+	
+
+}

@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Scanner;
+
 public class Grafgiskt extends JPanel {
     private int WIDTH = 100;
     private int HEIGHT = 100;
@@ -18,7 +20,10 @@ public class Grafgiskt extends JPanel {
     private int T = 200;
     private int S = 200;
     private int K = 100;
-    
+    private int A = 100;
+    private int B = 100;
+    private int C = 50;
+   
     
     private void moveBall(){
         int T = 200;
@@ -38,7 +43,11 @@ public class Grafgiskt extends JPanel {
         y += 1;
         
     }
-    
+    private void shootBall(){
+    	int A = 100;
+    	int B = 100;
+    	int C = 50;
+    }
     public Grafgiskt(){
         
         
@@ -62,7 +71,7 @@ public class Grafgiskt extends JPanel {
     frame.setLocation(300, 300);
     frame.setTitle("Dank game");
     frame.setDefaultCloseOperation(3);
-    frame.setResizable(false);
+    frame.setResizable(true);
     frame.setVisible(true);
     frame.add(grafik);
     
@@ -89,6 +98,9 @@ g2d.fillOval(x, y, d, d);
 g2d.setColor(Color.blue);
 g2d.drawOval(T+400, S+400, K, K);
 g2d.fillOval(T+400, S+400, K, K);
+g2d.drawOval(A + 200, B + 200, C, C);
+g2d.setColor(Color.red);
+g2d.fillOval(A + 200, B + 200, C, C);
 
 
 

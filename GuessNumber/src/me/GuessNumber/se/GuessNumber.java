@@ -6,18 +6,22 @@ public class GuessNumber {
             int secretNumber;
             secretNumber = (int) (Math.random() * 999 + 1);           
             Scanner keyboard = new Scanner(System.in);
+          int tries = 0;
             int guess;
-            do {
+            do { 
+            	
+            	
                   System.out.print("Enter a guess (1-1000): ");
                   guess = keyboard.nextInt();
                   if (guess == secretNumber)
-                        System.out.println("Your guess is correct. Congratulations!");
-                  else if (guess < secretNumber)
+                        System.out.println("Your guess is correct. Congratulations!" + "It took you" + tries + "tries!");
+                  else if (guess < secretNumber) 
                         System.out
-                                   .println("Your guess is smaller than the secret number.");
+                                   .println("Your guess is smaller than the secret number."); 
                   else if (guess > secretNumber)
                         System.out
                                    .println("Your guess is greater than the secret number.");
+               
             } while (guess != secretNumber);
       }
 }

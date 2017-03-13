@@ -1,0 +1,23 @@
+package curry.Aventry;
+
+public class Player {
+	String name;
+	int age, present, birth, profession;
+
+	public Player(int age, String name, int present, int birth, int profession) {
+		this.age = age;
+		this.name = name;
+		this.present = present;
+		this.birth = birth;
+		this.profession = profession;
+	}
+	
+	public int getAge(){
+		return this.age;
+	}
+	public String getName(){
+		return this.name;
+	}
+	public int
+
+}
